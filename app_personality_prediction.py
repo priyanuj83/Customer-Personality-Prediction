@@ -59,5 +59,16 @@ if submitted:
     # Predict
     predicted_cluster = model.predict(input_data)[0]
 
+    # Map cluster number to descriptive label
+    cluster_label_map = {
+        0: "Low Income Bargain Visitor",
+        1: "Highest Income Premium Loyalists",
+        2: "Lowest Income Disengaged Users",
+        3: "Mid Income Catalogue Buyers",
+        4: "High Income Niche Spenders"
+}
+
+    predicted_label = cluster_label_map.get(predicted_cluster, "Unknown")
+
     # Display Result
-    st.success(f"🧠 Predicted Customer Segment (Cluster): **{predicted_cluster}**")
+    st.success(f"🧠 Predicted Customer Segment: **{predicted_label}** (Cluster {predicted_cluster})")
